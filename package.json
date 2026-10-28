@@ -1,0 +1,61 @@
+{
+  "name": "jira-commit-ticket",
+  "displayName": "Jira Ticket from Branch",
+  "description": "One click to put the Jira ticket from your branch name into the commit message",
+  "version": "1.0.0",
+  "publisher": "kristiyanivanov",
+  "license": "MIT",
+  "icon": "images/icon.png",
+  "galleryBanner": { "color": "#0A3CAA", "theme": "dark" },
+  "categories": ["SCM Providers", "Other"],
+  "keywords": ["jira", "git", "commit", "branch", "ticket"],
+  "engines": { "vscode": "^1.80.0" },
+  "main": "./extension.js",
+  "activationEvents": [],
+  "extensionDependencies": ["vscode.git"],
+  "contributes": {
+    "commands": [
+      {
+        "command": "jiraCommit.insertTicket",
+        "title": "Insert Ticket from Branch",
+        "category": "Jira",
+        "icon": "$(tag)"
+      },
+      {
+        "command": "jiraCommit.pickTicket",
+        "title": "Pick Ticket…",
+        "category": "Jira",
+        "icon": "$(list-selection)"
+      }
+    ],
+    "menus": {
+      "scm/title": [
+        {
+          "command": "jiraCommit.insertTicket",
+          "when": "scmProvider == git",
+          "group": "navigation"
+        },
+        {
+          "command": "jiraCommit.pickTicket",
+          "when": "scmProvider == git",
+          "group": "jira@1"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Jira Ticket from Branch",
+      "properties": {
+        "jiraCommit.pattern": {
+          "type": "string",
+          "default": "[A-Z][A-Z0-9]+-\\d+",
+          "markdownDescription": "Regex that matches a ticket key (case-insensitive). Narrow it to your projects, e.g. `(PLAT|OPS)-\\d+`."
+        },
+        "jiraCommit.format": {
+          "type": "string",
+          "default": "${ticket}: ",
+          "markdownDescription": "How the ticket is written at the start of the message. `${ticket}` is replaced with the key, e.g. `[${ticket}] `."
+        }
+      }
+    }
+  }
+}
