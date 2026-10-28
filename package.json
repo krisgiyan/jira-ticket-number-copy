@@ -5,6 +5,12 @@
   "version": "1.0.0",
   "publisher": "kristiyanivanov",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/krisgiyan/jira-ticket-number-copy.git"
+  },
+  "bugs": { "url": "https://github.com/krisgiyan/jira-ticket-number-copy/issues" },
+  "homepage": "https://github.com/krisgiyan/jira-ticket-number-copy#readme",
   "icon": "images/icon.png",
   "galleryBanner": { "color": "#0A3CAA", "theme": "dark" },
   "categories": ["SCM Providers", "Other"],
